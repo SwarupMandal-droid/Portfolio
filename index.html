@@ -1,642 +1,512 @@
 <!DOCTYPE html>
 
-<html class="dark" lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
-      tailwind.config = {
-        darkMode: "class",
-        theme: {
-          extend: {
-            "colors": {
-                    "on-error": "#690005",
-                    "on-secondary-fixed": "#21005e",
-                    "on-tertiary": "#283044",
-                    "on-primary-fixed-variant": "#0035be",
-                    "on-secondary-container": "#bea8ff",
-                    "secondary-fixed-dim": "#cebdff",
-                    "surface": "#051424",
-                    "surface-container": "#122131",
-                    "surface-container-lowest": "#010f1f",
-                    "on-secondary": "#381385",
-                    "surface-container-low": "#0d1c2d",
-                    "outline": "#8e90a2",
-                    "surface-dim": "#051424",
-                    "surface-container-high": "#1c2b3c",
-                    "on-tertiary-fixed": "#131b2e",
-                    "on-primary": "#002388",
-                    "inverse-on-surface": "#233143",
-                    "on-surface-variant": "#c4c5d9",
-                    "surface-variant": "#273647",
-                    "surface-bright": "#2c3a4c",
-                    "inverse-surface": "#d4e4fa",
-                    "on-surface": "#d4e4fa",
-                    "inverse-primary": "#124af0",
-                    "secondary": "#cebdff",
-                    "on-background": "#d4e4fa",
-                    "primary-container": "#2e5bff",
-                    "surface-tint": "#b8c3ff",
-                    "tertiary-fixed-dim": "#bec6e0",
-                    "on-error-container": "#ffdad6",
-                    "error": "#ffb4ab",
-                    "surface-container-highest": "#273647",
-                    "on-secondary-fixed-variant": "#4f319c",
-                    "background": "#051424",
-                    "outline-variant": "#434656",
-                    "primary-fixed": "#dde1ff",
-                    "primary": "#b8c3ff",
-                    "tertiary-container": "#656d84",
-                    "on-primary-container": "#efefff",
-                    "on-primary-fixed": "#001356",
-                    "secondary-fixed": "#e8ddff",
-                    "on-tertiary-fixed-variant": "#3f465c",
-                    "secondary-container": "#4f319c",
-                    "tertiary": "#bec6e0",
-                    "primary-fixed-dim": "#b8c3ff",
-                    "tertiary-fixed": "#dae2fd",
-                    "error-container": "#93000a",
-                    "on-tertiary-container": "#eef0ff"
-            },
-            "borderRadius": {
-                    "DEFAULT": "0.25rem",
-                    "lg": "0.5rem",
-                    "xl": "0.75rem",
-                    "full": "9999px"
-            },
-            "spacing": {
-                    "gutter": "32px",
-                    "container-max": "1280px",
-                    "unit": "8px",
-                    "margin-page": "64px",
-                    "section-gap": "160px"
-            },
-            "fontFamily": {
-                    "headline-lg": ["Manrope"],
-                    "body-md": ["Manrope"],
-                    "body-lg": ["Manrope"],
-                    "display-xl": ["Manrope"],
-                    "headline-md": ["Manrope"],
-                    "label-sm": ["Manrope"]
-            },
-            "fontSize": {
-                    "headline-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
-                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
-                    "body-lg": ["20px", {"lineHeight": "1.6", "fontWeight": "400"}],
-                    "display-xl": ["72px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "800"}],
-                    "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "600"}],
-                    "label-sm": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}]
-            }
-          },
-        },
-      }
-    </script>
-<style>
-        html {
-            scroll-behavior: smooth;
-        }
-        .glass-card {
-            background: rgba(18, 33, 49, 0.4);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .glass-card:hover {
-            border-color: rgba(46, 91, 255, 0.3);
-            box-shadow: 0 0 30px rgba(46, 91, 255, 0.1);
-            transform: translateY(-4px);
-        }
-        .skill-chip {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 8px 14px;
-            background: rgba(184, 195, 255, 0.08);
-            border: 1px solid rgba(184, 195, 255, 0.15);
-            border-radius: 12px;
-            font-size: 13px;
-            font-weight: 500;
-            color: #d4e4fa;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .skill-chip:hover {
-            background: rgba(184, 195, 255, 0.15);
-            border-color: rgba(184, 195, 255, 0.3);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(46, 91, 255, 0.15);
-        }
-        .skill-category {
-            margin-bottom: 24px;
-        }
-        .skill-category-title {
-            font-size: 12px;
-            font-weight: 700;
-            letter-spacing: 0.1em;
-            color: #b8c3ff;
-            text-transform: uppercase;
-            margin-bottom: 12px;
-            display: block;
-        }
-        .skill-category-content {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
-        body {
-            background-color: #051424;
-            color: #d4e4fa;
-            font-family: 'Manrope', sans-serif;
-            overflow-x: hidden;
-        }
-        .bg-mesh {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            background: 
-                radial-gradient(circle at 0% 0%, rgba(46, 91, 255, 0.15) 0%, transparent 40%),
-                radial-gradient(circle at 100% 100%, rgba(124, 58, 237, 0.1) 0%, transparent 40%);
-        }
-    </style>
-<style>
-    body {
-      min-height: max(884px, 100dvh);
-    }
-  </style>
-  </head>
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script src="assets/js/tailwind-config.js"></script>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
 <body class="selection:bg-primary-container selection:text-white">
-<div class="bg-mesh"></div>
-<!-- TopAppBar -->
-<header class="fixed top-6 left-1/2 -translate-x-1/2 w-[92%] max-w-7xl rounded-2xl border border-white/10 bg-slate-950/60 backdrop-blur-xl z-50 flex justify-between items-center px-8 py-4 shadow-[0_0_20px_rgba(46,91,255,0.1)]">
-<div class="flex items-center gap-3">
-<span class="material-symbols-outlined text-blue-500" data-icon="terminal">terminal</span>
-<span class="text-lg font-black tracking-tighter text-slate-50">Swarup Mandal</span>
-</div>
-<nav class="hidden md:flex items-center gap-8 font-manrope tracking-tight text-sm font-medium">
-<a class="text-blue-500 font-bold" href="#work">Work</a>
-<a class="text-slate-400 hover:text-slate-100 transition-colors" href="#skills">Skills</a>
-<a class="text-slate-400 hover:text-slate-100 transition-colors" href="#future">Future</a>
-<a class="text-slate-400 hover:text-slate-100 transition-colors" href="#contact">Contact</a>
-</nav>
-<button onclick="window.open('files/Swarup_Mandal_Resume.pdf', '_blank')" class="bg-primary-container text-on-primary-container px-5 py-2 rounded-xl text-sm font-bold active:scale-95 transition-transform hover:bg-white/5 hover:backdrop-blur-2xl transition-all duration-300">
+    <div class="bg-mesh"></div>
+    <!-- TopAppBar -->
+    <header
+        class="fixed top-6 left-1/2 -translate-x-1/2 w-[92%] max-w-7xl rounded-2xl border border-white/10 bg-slate-950/60 backdrop-blur-xl z-50 flex justify-between items-center px-8 py-4 shadow-[0_0_20px_rgba(46,91,255,0.1)]">
+        <div class="flex items-center gap-3">
+            <span class="material-symbols-outlined text-blue-500" data-icon="terminal">terminal</span>
+            <span class="text-lg font-black tracking-tighter text-slate-50">Swarup Mandal</span>
+        </div>
+        <nav class="hidden md:flex items-center gap-8 font-manrope tracking-tight text-sm font-medium">
+            <a class="text-blue-500 font-bold" href="#work">Work</a>
+            <a class="text-slate-400 hover:text-slate-100 transition-colors" href="#skills">Skills</a>
+            <a class="text-slate-400 hover:text-slate-100 transition-colors" href="#future">Future</a>
+            <a class="text-slate-400 hover:text-slate-100 transition-colors" href="#contact">Contact</a>
+        </nav>
+        <button onclick="window.open('assets/docs/Swarup_Mandal_Resume.pdf', '_blank')"
+            class="bg-primary-container text-on-primary-container px-5 py-2 rounded-xl text-sm font-bold active:scale-95 transition-transform hover:bg-white/5 hover:backdrop-blur-2xl transition-all duration-300">
             Resume
         </button>
-</header>
-<main class="max-w-7xl mx-auto px-8 pt-48">
-<!-- Hero Section -->
-<section class="mb-40 flex flex-col items-center text-center">
-<!-- Photo Section -->
-<div class="mb-8">
-<div class="w-48 h-48 rounded-3xl border-2 border-primary/30 overflow-hidden bg-surface-container flex items-center justify-center">
-<img src="files/casual_photo.jpeg" alt="Profile Photo" class="w-full h-full object-cover"/>
-</div>
-</div>
-<!-- Text below photo -->
-<p class="text-body-lg text-on-surface-variant mb-8 max-w-2xl">
-Full Stack Developer | Python Backend Developer | Building Scalable Web Apps | Exploring Data Science
-</p>
-<div class="mb-6 inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/5 bg-white/5 backdrop-blur-md">
-<span class="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
-<span class="text-label-sm font-label-sm text-blue-400 uppercase">Available for new opportunities</span>
-</div>
-<h1 class="font-display-xl text-display-xl text-on-background mb-8 max-w-4xl">
-                Backend Developer Building <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Real-World Products</span>
-</h1>
-<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mb-12">
-                Specializing in scalable architecture, performance optimization, and reliable system design. Turning complex requirements into elegant, high-performance backends.
+    </header>
+    <main class="max-w-7xl mx-auto px-8 pt-48">
+        <!-- Hero Section -->
+        <section class="mb-40 flex flex-col items-center text-center">
+            <!-- Photo Section -->
+            <div class="mb-8">
+                <div
+                    class="w-48 h-48 rounded-3xl border-2 border-primary/30 overflow-hidden bg-surface-container flex items-center justify-center">
+                    <img src="assets/images/casual_photo.jpeg" alt="Profile Photo" class="w-full h-full object-cover" />
+                </div>
+            </div>
+            <!-- Text below photo -->
+            <p class="text-body-lg text-on-surface-variant mb-8 max-w-2xl">
+                Full Stack Developer | Python Backend Developer | Building Scalable Web Apps | Exploring Data Science
             </p>
-<div class="flex gap-4">
-<button onclick="window.location.href='#work'" class="bg-primary-container text-on-primary-container px-8 py-4 rounded-xl font-bold hover:shadow-[0_0_30px_rgba(46,91,255,0.4)] transition-all">
+            <div
+                class="mb-6 inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/5 bg-white/5 backdrop-blur-md">
+                <span class="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
+                <span class="text-label-sm font-label-sm text-blue-400 uppercase">Available for new opportunities</span>
+            </div>
+            <h1 class="font-display-xl text-display-xl text-on-background mb-8 max-w-4xl">
+                Backend Developer Building <span
+                    class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Real-World
+                    Products</span>
+            </h1>
+            <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mb-12">
+                Specializing in scalable architecture, performance optimization, and reliable system design. Turning
+                complex requirements into elegant, high-performance backends.
+            </p>
+            <div class="flex gap-4">
+                <button onclick="window.location.href='#work'"
+                    class="bg-primary-container text-on-primary-container px-8 py-4 rounded-xl font-bold hover:shadow-[0_0_30px_rgba(46,91,255,0.4)] transition-all">
                     Explore Projects
                 </button>
-<button onclick="window.location.href='#contact'" class="border border-white/10 px-8 py-4 rounded-xl font-bold bg-white/5 backdrop-blur-md hover:bg-white/10 transition-all">
+                <button onclick="window.location.href='#contact'"
+                    class="border border-white/10 px-8 py-4 rounded-xl font-bold bg-white/5 backdrop-blur-md hover:bg-white/10 transition-all">
                     Contact Me
                 </button>
-</div>
-<!-- Scroll Indicator -->
-<div class="mt-32 flex flex-col items-center gap-4">
-<div class="w-[1px] h-20 bg-gradient-to-b from-transparent via-secondary to-transparent"></div>
-</div>
-</section>
-<!-- Featured Projects Section -->
-<section class="mb-40" id="work">
-<div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-4">
-<div>
-<h2 class="font-headline-lg text-headline-lg text-on-background mb-4">Featured Work</h2>
-<p class="text-on-surface-variant max-w-xl">A selection of production-grade platforms and experimental applications focusing on scalability and user experience.</p>
-</div>
-<span class="text-label-sm font-label-sm text-outline uppercase tracking-widest">01 / Selected Projects</span>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-<!-- Project 1 -->
-<div class="glass-card rounded-3xl overflow-hidden flex flex-col h-full">
-<div class="h-48 w-full bg-surface-container overflow-hidden">
-<img class="w-full h-full object-cover opacity-60 hover:scale-105 transition-transform duration-700" data-alt="Modern medical dashboard with sleek data visualizations and medical icons in a dark minimalist interface" src="files/LifelineCare.png"/>
-</div>
-<div class="p-8 flex flex-col flex-grow">
-<div class="flex gap-2 mb-4 flex-wrap">
-<span class="text-[10px] font-bold uppercase tracking-wider text-primary bg-primary/10 px-2 py-1 rounded">Python</span>
-<span class="text-[10px] font-bold uppercase tracking-wider text-primary bg-primary/10 px-2 py-1 rounded">Django</span>
-<span class="text-[10px] font-bold uppercase tracking-wider text-primary bg-primary/10 px-2 py-1 rounded">HTML,CSS,JAVASCRIPT</span>
-<span class="text-[10px] font-bold uppercase tracking-wider text-primary bg-primary/10 px-2 py-1 rounded">TailwindCSS</span>
-<span class="text-[10px] font-bold uppercase tracking-wider text-primary bg-primary/10 px-2 py-1 rounded">MySQL</span>
-<span class="text-[10px] font-bold uppercase tracking-wider text-primary bg-primary/10 px-2 py-1 rounded">AI/ML</span>
-<span class="text-[10px] font-bold uppercase tracking-wider text-primary bg-primary/10 px-2 py-1 rounded">Github</span>
-</div>
-<h3 class="font-headline-md text-headline-md text-on-background mb-4">Healthcare Management System</h3>
-<p class="text-on-surface-variant text-body-md mb-8 flex-grow">Advanced patient management system with real-time scheduling and secure data processing for medical institutions.</p>
-<div class="flex flex-col gap-3">
-<button onclick="window.open('files/README.md')" class="w-full bg-white/5 hover:bg-white/10 py-3 rounded-xl font-bold transition-colors">View details</button>
-<div class="grid grid-cols-2 gap-3">
-<button onclick="window.open('https://github.com/SwarupMandal-droid/healthcare-project/')" class="flex items-center justify-center gap-2 border border-white/5 py-2 rounded-lg text-sm font-medium hover:bg-white/5 transition-colors">
-<span class="material-symbols-outlined text-sm" data-icon="code">code</span> GitHub
+            </div>
+            <!-- Scroll Indicator -->
+            <div class="mt-32 flex flex-col items-center gap-4">
+                <div class="w-[1px] h-20 bg-gradient-to-b from-transparent via-secondary to-transparent"></div>
+            </div>
+        </section>
+        <!-- Featured Projects Section -->
+        <section class="mb-40" id="work">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-4">
+                <div>
+                    <h2 class="font-headline-lg text-headline-lg text-on-background mb-4">Featured Work</h2>
+                    <p class="text-on-surface-variant max-w-xl">A selection of production-grade platforms and
+                        experimental applications focusing on scalability and user experience.</p>
+                </div>
+                <span class="text-label-sm font-label-sm text-outline uppercase tracking-widest">01 / Selected
+                    Projects</span>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="glass-card rounded-3xl overflow-hidden flex flex-col h-full">
+                    <div class="h-48 w-full bg-surface-container overflow-hidden">
+                        <img class="w-full h-full object-cover opacity-60 hover:scale-105 transition-transform duration-700"
+                            data-alt="Modern medical dashboard with sleek data visualizations and medical icons in a dark minimalist interface"
+                            src="assets/images/LifelineCare.png" />
+                    </div>
+                    <div class="p-8 flex flex-col flex-grow">
+                        <div class="flex gap-2 mb-4 flex-wrap">
+                            <span
+                                class="text-[10px] font-bold uppercase tracking-wider text-primary bg-primary/10 px-2 py-1 rounded">Python</span>
+                            <span
+                                class="text-[10px] font-bold uppercase tracking-wider text-primary bg-primary/10 px-2 py-1 rounded">Django</span>
+                            <span
+                                class="text-[10px] font-bold uppercase tracking-wider text-primary bg-primary/10 px-2 py-1 rounded">HTML,CSS,JAVASCRIPT</span>
+                            <span
+                                class="text-[10px] font-bold uppercase tracking-wider text-primary bg-primary/10 px-2 py-1 rounded">TailwindCSS</span>
+                            <span
+                                class="text-[10px] font-bold uppercase tracking-wider text-primary bg-primary/10 px-2 py-1 rounded">MySQL</span>
+                            <span
+                                class="text-[10px] font-bold uppercase tracking-wider text-primary bg-primary/10 px-2 py-1 rounded">AI/ML</span>
+                            <span
+                                class="text-[10px] font-bold uppercase tracking-wider text-primary bg-primary/10 px-2 py-1 rounded">Github</span>
+                        </div>
+                        <h3 class="font-headline-md text-headline-md text-on-background mb-4">Healthcare Management
+                            System</h3>
+                        <p class="text-on-surface-variant text-body-md mb-8 flex-grow">Advanced patient management
+                            system with real-time scheduling and secure data processing for medical institutions.</p>
+                        <div class="flex flex-col gap-3">
+                            <button onclick="window.open('README.md')"
+                                class="w-full bg-white/5 hover:bg-white/10 py-3 rounded-xl font-bold transition-colors">View
+                                details</button>
+                            <div class="grid grid-cols-2 gap-3">
+                                <button
+                                    onclick="window.open('https://github.com/SwarupMandal-droid/healthcare-project/')"
+                                    class="flex items-center justify-center gap-2 border border-white/5 py-2 rounded-lg text-sm font-medium hover:bg-white/5 transition-colors">
+                                    <span class="material-symbols-outlined text-sm" data-icon="code">code</span> GitHub
                                 </button>
-<button class="flex items-center justify-center gap-2 border border-white/5 py-2 rounded-lg text-sm font-medium hover:bg-white/5 transition-colors">
-<span class="material-symbols-outlined text-sm" data-icon="rocket_launch">rocket_launch</span> Demo
+                                <button
+                                    class="flex items-center justify-center gap-2 border border-white/5 py-2 rounded-lg text-sm font-medium hover:bg-white/5 transition-colors">
+                                    <span class="material-symbols-outlined text-sm"
+                                        data-icon="rocket_launch">rocket_launch</span> Demo
                                 </button>
-</div>
-</div>
-</div>
-</div>
-<!-- Project 2 -->
-<div class="glass-card rounded-3xl overflow-hidden flex flex-col h-full">
-<div class="h-48 w-full bg-surface-container overflow-hidden">
-<img class="w-full h-full object-cover opacity-60 hover:scale-105 transition-transform duration-700" data-alt="Abstract logistics and delivery network visualization with glowing lines on a deep blue background" src="files/Gharkhana.png"/>
-</div>
-<div class="p-8 flex flex-col flex-grow">
-<div class="flex gap-2 mb-4 flex-wrap">
-<span class="text-[10px] font-bold uppercase tracking-wider text-primary bg-primary/10 px-2 py-1 rounded">Go</span>
-<span class="text-[10px] font-bold uppercase tracking-wider text-primary bg-primary/10 px-2 py-1 rounded">Redis</span>
-<span class="text-[10px] font-bold uppercase tracking-wider text-primary bg-primary/10 px-2 py-1 rounded">Microservices</span>
-</div>
-<h3 class="font-headline-md text-headline-md text-on-background mb-4">Food Delivery</h3>
-<p class="text-on-surface-variant text-body-md mb-8 flex-grow">High-concurrency delivery engine using Go microservices and Redis for lightning-fast order matching and tracking.</p>
-<div class="flex flex-col gap-3">
-<button onclick="window.open('files/gharKaKhana_project_details.pdf', '_blank')" class="w-full bg-white/5 hover:bg-white/10 py-3 rounded-xl font-bold transition-colors">View details</button>
-<div class="grid grid-cols-2 gap-3">
-<button onclick="window.open('https://github.com/SwarupMandal-droid/GharKaKhana.git')"   class="flex items-center justify-center gap-2 border border-white/5 py-2 rounded-lg text-sm font-medium hover:bg-white/5 transition-colors">
-<span class="material-symbols-outlined text-sm" data-icon="code">code</span> GitHub
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Project 2 -->
+                <div class="glass-card rounded-3xl overflow-hidden flex flex-col h-full">
+                    <div class="h-48 w-full bg-surface-container overflow-hidden">
+                        <img class="w-full h-full object-cover opacity-60 hover:scale-105 transition-transform duration-700"
+                            data-alt="Abstract logistics and delivery network visualization with glowing lines on a deep blue background"
+                            src="assets/images/Gharkhana.png" />
+                    </div>
+                    <div class="p-8 flex flex-col flex-grow">
+                        <div class="flex gap-2 mb-4 flex-wrap">
+                            <span
+                                class="text-[10px] font-bold uppercase tracking-wider text-primary bg-primary/10 px-2 py-1 rounded">Go</span>
+                            <span
+                                class="text-[10px] font-bold uppercase tracking-wider text-primary bg-primary/10 px-2 py-1 rounded">Redis</span>
+                            <span
+                                class="text-[10px] font-bold uppercase tracking-wider text-primary bg-primary/10 px-2 py-1 rounded">Microservices</span>
+                        </div>
+                        <h3 class="font-headline-md text-headline-md text-on-background mb-4">Food Delivery</h3>
+                        <p class="text-on-surface-variant text-body-md mb-8 flex-grow">High-concurrency delivery engine
+                            using Go microservices and Redis for lightning-fast order matching and tracking.</p>
+                        <div class="flex flex-col gap-3">
+                            <button onclick="window.open('assets/docs/gharKaKhana_project_details.pdf', '_blank')"
+                                class="w-full bg-white/5 hover:bg-white/10 py-3 rounded-xl font-bold transition-colors">View
+                                details</button>
+                            <div class="grid grid-cols-2 gap-3">
+                                <button onclick="window.open('https://github.com/SwarupMandal-droid/GharKaKhana.git')"
+                                    class="flex items-center justify-center gap-2 border border-white/5 py-2 rounded-lg text-sm font-medium hover:bg-white/5 transition-colors">
+                                    <span class="material-symbols-outlined text-sm" data-icon="code">code</span> GitHub
                                 </button>
-<button class="flex items-center justify-center gap-2 border border-white/5 py-2 rounded-lg text-sm font-medium hover:bg-white/5 transition-colors">
-<span class="material-symbols-outlined text-sm" data-icon="rocket_launch">rocket_launch</span> Demo
+                                <button onclick="window.open('https://web-production-6768d.up.railway.app')"
+                                    class="flex items-center justify-center gap-2 border border-white/5 py-2 rounded-lg text-sm font-medium hover:bg-white/5 transition-colors">
+                                    <span class="material-symbols-outlined text-sm"
+                                        data-icon="rocket_launch">rocket_launch</span> Demo
                                 </button>
-</div>
-</div>
-</div>
-</div>
-<!-- Project 3 -->
-<div class="glass-card rounded-3xl overflow-hidden flex flex-col h-full border-blue-500/20">
-<div class="h-48 w-full bg-surface-container overflow-hidden relative">
-<div class="absolute top-4 right-4 bg-blue-500 text-white text-[10px] font-bold px-2 py-1 rounded-full z-10">HACKATHON WINNER</div>
-<img class="w-full h-full object-cover opacity-60 hover:scale-105 transition-transform duration-700" data-alt="Circuit board patterns merging with organic culinary ingredients in a high-tech kitchen aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwVuvRhDtZbq4J0SpZuydBd0qhEfyEJP-m_NP-X2Lu-iS9nsh-_KdrpZk23AE-0Tj8SIdy0w5RPswrK-Qd97nXOVxoeKiM3K-C3gzo-ACoJFJMwajwnoShctfd8Q-fgmaV9yz93yIaMrTUeHbKxaMuFBrbLi97tM0yv6f96ceAMirY2aSlDfvD8SD0qrUIJ61tt81YMoFL1BoXJjr84oq3Zx-ST8KZ95u8XR_bgBf_65aiJE-ZCT82vm0SSTPSQmT1mWk2FDGUYOc"/>
-</div>
-<div class="p-8 flex flex-col flex-grow">
-<div class="flex gap-2 mb-4 flex-wrap">
-<span class="text-[10px] font-bold uppercase tracking-wider text-primary bg-primary/10 px-2 py-1 rounded">Python</span>
-<span class="text-[10px] font-bold uppercase tracking-wider text-primary bg-primary/10 px-2 py-1 rounded">OpenAI</span>
-<span class="text-[10px] font-bold uppercase tracking-wider text-primary bg-primary/10 px-2 py-1 rounded">FastAPI</span>
-</div>
-<h3 class="font-headline-md text-headline-md text-on-background mb-4">AI Recipe Gen</h3>
-<p class="text-on-surface-variant text-body-md mb-8 flex-grow">An intelligent culinary assistant that generates personalized recipes based on pantry inventory using LLMs.</p>
-<div class="flex flex-col gap-3">
-<button class="w-full bg-white/5 hover:bg-white/10 py-3 rounded-xl font-bold transition-colors">View details</button>
-<div class="grid grid-cols-2 gap-3">
-<button class="flex items-center justify-center gap-2 border border-white/5 py-2 rounded-lg text-sm font-medium hover:bg-white/5 transition-colors">
-<span class="material-symbols-outlined text-sm" data-icon="code">code</span> GitHub
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Project 3 -->
+                <div class="glass-card rounded-3xl overflow-hidden flex flex-col h-full border-blue-500/20">
+                    <div class="h-48 w-full bg-surface-container overflow-hidden relative">
+                        <img class="w-full h-full object-cover opacity-60 hover:scale-105 transition-transform duration-700"
+                            data-alt="MatchOS real-time cricket tournament management dashboard"
+                            src="assets/images/MatchOS.jpg" />
+                    </div>
+                    <div class="p-8 flex flex-col flex-grow">
+                        <div class="flex gap-2 mb-4 flex-wrap">
+                            <span
+                                class="text-[10px] font-bold uppercase tracking-wider text-primary bg-primary/10 px-2 py-1 rounded">Next.js</span>
+                            <span
+                                class="text-[10px] font-bold uppercase tracking-wider text-primary bg-primary/10 px-2 py-1 rounded">TypeScript</span>
+                            <span
+                                class="text-[10px] font-bold uppercase tracking-wider text-primary bg-primary/10 px-2 py-1 rounded">PostgreSQL</span>
+                            <span
+                                class="text-[10px] font-bold uppercase tracking-wider text-primary bg-primary/10 px-2 py-1 rounded">Socket.IO</span>
+                        </div>
+                        <h3 class="font-headline-md text-headline-md text-on-background mb-4">MatchOS</h3>
+                        <p class="text-on-surface-variant text-body-md mb-8 flex-grow">Real-time cricket tournament
+                            management and live scoring platform with event-driven match analytics.</p>
+                        <div class="flex flex-col gap-3">
+                            <button onclick="window.open('https://github.com/SwarupMandal-droid/MatchOS')"
+                                class="w-full bg-white/5 hover:bg-white/10 py-3 rounded-xl font-bold transition-colors">View
+                                details</button>
+                            <div class="grid grid-cols-2 gap-3">
+                                <button onclick="window.open('https://github.com/SwarupMandal-droid/MatchOS')"
+                                    class="flex items-center justify-center gap-2 border border-white/5 py-2 rounded-lg text-sm font-medium hover:bg-white/5 transition-colors">
+                                    <span class="material-symbols-outlined text-sm" data-icon="code">code</span> GitHub
                                 </button>
-<button class="flex items-center justify-center gap-2 border border-white/5 py-2 rounded-lg text-sm font-medium hover:bg-white/5 transition-colors">
-<span class="material-symbols-outlined text-sm" data-icon="rocket_launch">rocket_launch</span> Demo
+                                <button
+                                    class="flex items-center justify-center gap-2 border border-white/5 py-2 rounded-lg text-sm font-medium hover:bg-white/5 transition-colors opacity-50 cursor-not-allowed">
+                                    <span class="material-symbols-outlined text-sm"
+                                        data-icon="rocket_launch">rocket_launch</span> Demo
                                 </button>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- Skills Section -->
-<section class="mb-40" id="skills">
-<h2 class="font-headline-lg text-headline-lg text-on-background mb-16 text-center">Technical Skills</h2>
-<div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
-<!-- Full Stack Developer (Python) -->
-<div class="glass-card p-8 rounded-3xl">
-<div class="flex items-center gap-3 mb-10">
-<div class="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center border border-blue-500/20">
-<span class="material-symbols-outlined text-blue-400 text-lg" data-icon="code">code</span>
-</div>
-<h3 class="text-2xl font-bold bg-gradient-to-r from-blue-400 to-blue-300 bg-clip-text text-transparent">Full Stack Developer</h3>
-</div>
-<div class="space-y-6">
-<div class="skill-category">
-<span class="skill-category-title">Python & Frameworks</span>
-<div class="skill-category-content">
-<span class="skill-chip">Python</span>
-<span class="skill-chip">Core Python</span>
-<span class="skill-chip">OOP</span>
-<span class="skill-chip">Django</span>
-<span class="skill-chip">DRF</span>
-<span class="skill-chip">Flask</span>
-<span class="skill-chip">FastAPI</span>
-<span class="skill-chip">REST APIs</span>
-<span class="skill-chip">JSON</span>
-<span class="skill-chip">JWT/OAuth</span>
-</div>
-</div>
-<div class="skill-category">
-<span class="skill-category-title">Frontend</span>
-<div class="skill-category-content">
-<span class="skill-chip">HTML5</span>
-<span class="skill-chip">CSS3</span>
-<span class="skill-chip">JavaScript</span>
-<span class="skill-chip">React.js</span>
-<span class="skill-chip">Tailwind CSS</span>
-<span class="skill-chip">Bootstrap</span>
-</div>
-</div>
-<div class="skill-category">
-<span class="skill-category-title">Database</span>
-<div class="skill-category-content">
-<span class="skill-chip">SQL</span>
-<span class="skill-chip">PostgreSQL</span>
-<span class="skill-chip">MySQL</span>
-<span class="skill-chip">Django ORM</span>
-<span class="skill-chip">SQLAlchemy</span>
-</div>
-</div>
-<div class="skill-category">
-<span class="skill-category-title">DevOps & Tools</span>
-<div class="skill-category-content">
-<span class="skill-chip">Git</span>
-<span class="skill-chip">GitHub</span>
-<span class="skill-chip">Linux</span>
-<span class="skill-chip">Shell</span>
-<span class="skill-chip">Docker</span>
-<span class="skill-chip">Nginx</span>
-<span class="skill-chip">CI/CD</span>
-<span class="skill-chip">AWS</span>
-<span class="skill-chip">Azure</span>
-<span class="skill-chip">GCP</span>
-</div>
-</div>
-<div class="skill-category">
-<span class="skill-category-title">Testing & Optimization</span>
-<div class="skill-category-content">
-<span class="skill-chip">Pytest</span>
-<span class="skill-chip">Debugging</span>
-<span class="skill-chip">Redis</span>
-<span class="skill-chip">Caching</span>
-<span class="skill-chip">Celery</span>
-<span class="skill-chip">Microservices</span>
-</div>
-</div>
-</div>
-</div>
-<!-- Data Scientist -->
-<div class="glass-card p-8 rounded-3xl">
-<div class="flex items-center gap-3 mb-10">
-<div class="w-12 h-12 rounded-xl bg-purple-500/10 flex items-center justify-center border border-purple-500/20">
-<span class="material-symbols-outlined text-purple-400 text-lg" data-icon="analytics">analytics</span>
-</div>
-<h3 class="text-2xl font-bold bg-gradient-to-r from-purple-400 to-purple-300 bg-clip-text text-transparent">Data Scientist</h3>
-</div>
-<div class="space-y-6">
-<div class="skill-category">
-<span class="skill-category-title">Programming</span>
-<div class="skill-category-content">
-<span class="skill-chip">Python</span>
-</div>
-</div>
-<div class="skill-category">
-<span class="skill-category-title">Data Management</span>
-<div class="skill-category-content">
-<span class="skill-chip">SQL</span>
-<span class="skill-chip">PostgreSQL</span>
-<span class="skill-chip">MySQL</span>
-<span class="skill-chip">Excel</span>
-</div>
-</div>
-<div class="skill-category">
-<span class="skill-category-title">Data Analysis</span>
-<div class="skill-category-content">
-<span class="skill-chip">Pandas</span>
-<span class="skill-chip">NumPy</span>
-<span class="skill-chip">Cleaning</span>
-<span class="skill-chip">ETL</span>
-</div>
-</div>
-<div class="skill-category">
-<span class="skill-category-title">Visualization</span>
-<div class="skill-category-content">
-<span class="skill-chip">Matplotlib</span>
-<span class="skill-chip">Seaborn</span>
-<span class="skill-chip">Power BI</span>
-<span class="skill-chip">Tableau</span>
-</div>
-</div>
-<div class="skill-category">
-<span class="skill-category-title">Machine Learning</span>
-<div class="skill-category-content">
-<span class="skill-chip">Scikit-learn</span>
-<span class="skill-chip">Feature Engineering</span>
-<span class="skill-chip">Regression</span>
-<span class="skill-chip">Classification</span>
-<span class="skill-chip">Clustering</span>
-<span class="skill-chip">TensorFlow</span>
-<span class="skill-chip">PyTorch</span>
-<span class="skill-chip">Model Evaluation</span>
-</div>
-</div>
-<div class="skill-category">
-<span class="skill-category-title">Statistics & Math</span>
-<div class="skill-category-content">
-<span class="skill-chip">Statistics</span>
-<span class="skill-chip">Probability</span>
-</div>
-</div>
-<div class="skill-category">
-<span class="skill-category-title">Tools</span>
-<div class="skill-category-content">
-<span class="skill-chip">Jupyter</span>
-<span class="skill-chip">Git</span>
-<span class="skill-chip">GitHub</span>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- Future Data Projects Teaser -->
-<section class="mb-40 relative overflow-hidden rounded-[40px] bg-surface-container border border-white/5 p-12 md:p-24" id="future">
-<div class="absolute top-0 right-0 w-1/2 h-full opacity-20 blur-3xl pointer-events-none">
-<div class="w-full h-full bg-blue-500 rounded-full animate-pulse"></div>
-</div>
-<div class="relative z-10 max-w-2xl">
-<span class="text-label-sm font-label-sm text-blue-400 uppercase tracking-widest mb-6 block">Coming Soon</span>
-<h2 class="font-headline-lg text-headline-lg text-on-background mb-8">Future Data Projects</h2>
-<p class="text-body-lg text-on-surface-variant mb-12">Currently exploring Large Scale Data Processing and ML Ops. Building a high-throughput streaming engine for real-time analytics. Stay tuned for the unveiling of my deep-data infrastructure experiments.</p>
-<div class="flex items-center gap-6">
-<div class="flex -space-x-3">
-<div class="w-12 h-12 rounded-full border-2 border-surface-container bg-slate-800 flex items-center justify-center">
-<span class="material-symbols-outlined text-sm" data-icon="monitoring">monitoring</span>
-</div>
-<div class="w-12 h-12 rounded-full border-2 border-surface-container bg-slate-700 flex items-center justify-center">
-<span class="material-symbols-outlined text-sm" data-icon="hub">hub</span>
-</div>
-<div class="w-12 h-12 rounded-full border-2 border-surface-container bg-slate-600 flex items-center justify-center">
-<span class="material-symbols-outlined text-sm" data-icon="smart_toy">smart_toy</span>
-</div>
-</div>
-<span class="text-sm font-medium text-on-surface-variant">3 Projects in Development</span>
-</div>
-</div>
-</section>
-<!-- Contact Section -->
-<section class="mb-40" id="contact">
-<div class="grid grid-cols-1 md:grid-cols-2 gap-20">
-<div>
-<h2 class="font-headline-lg text-headline-lg text-on-background mb-8">Let's Build Something Great</h2>
-<p class="text-body-lg text-on-surface-variant mb-12">I'm always open to discussing backend architecture, product development, or new opportunities. Reach out and let's start a conversation.</p>
-<div class="space-y-8">
-<div class="flex items-start gap-4">
-<div class="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0">
-<span class="material-symbols-outlined text-blue-400" data-icon="mail">mail</span>
-</div>
-<div>
-<h4 class="font-bold mb-1">Email</h4>
-<p class="text-on-surface-variant">swarupmandal630@gmail.com</p>
-</div>
-</div>
-<div class="flex items-start gap-4">
-<div class="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0">
-<span class="material-symbols-outlined text-blue-400" data-icon="location_on">location_on</span>
-</div>
-<div>
-<h4 class="font-bold mb-1">Location</h4>
-<p class="text-on-surface-variant">Remote / Kolkata, India</p>
-</div>
-</div>
-</div>
-</div>
-<div class="glass-card p-10 rounded-[32px]">
-<form id="contactForm" class="space-y-6">
-<div class="space-y-2">
-<label class="text-sm font-bold text-on-surface-variant ml-2">Name</label>
-<input id="name" class="w-full bg-slate-900/50 border border-white/10 rounded-2xl px-6 py-4 focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 outline-none transition-all" placeholder="John Doe" type="text" required/>
-<span id="nameError" class="text-red-400 text-xs ml-2 hidden">Please enter your name</span>
-</div>
-<div class="space-y-2">
-<label class="text-sm font-bold text-on-surface-variant ml-2">Email Address</label>
-<input id="email" class="w-full bg-slate-900/50 border border-white/10 rounded-2xl px-6 py-4 focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 outline-none transition-all" placeholder="john@example.com" type="email" required/>
-<span id="emailError" class="text-red-400 text-xs ml-2 hidden">Please enter a valid email</span>
-</div>
-<div class="space-y-2">
-<label class="text-sm font-bold text-on-surface-variant ml-2">Message</label>
-<textarea id="message" class="w-full bg-slate-900/50 border border-white/10 rounded-2xl px-6 py-4 focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 outline-none transition-all" placeholder="Tell me about your project..." rows="4" required></textarea>
-<span id="messageError" class="text-red-400 text-xs ml-2 hidden">Message must be at least 10 characters</span>
-</div>
-<button id="submitBtn" class="w-full bg-primary-container text-on-primary-container py-5 rounded-2xl font-bold hover:shadow-[0_0_30px_rgba(46,91,255,0.3)] active:scale-95 transition-all" type="submit">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Skills Section -->
+        <section class="mb-40" id="skills">
+            <h2 class="font-headline-lg text-headline-lg text-on-background mb-16 text-center">Technical Skills</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                <!-- Full Stack Developer (Python) -->
+                <div class="glass-card p-8 rounded-3xl">
+                    <div class="flex items-center gap-3 mb-10">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center border border-blue-500/20">
+                            <span class="material-symbols-outlined text-blue-400 text-lg" data-icon="code">code</span>
+                        </div>
+                        <h3
+                            class="text-2xl font-bold bg-gradient-to-r from-blue-400 to-blue-300 bg-clip-text text-transparent">
+                            Full Stack Developer</h3>
+                    </div>
+                    <div class="space-y-6">
+                        <div class="skill-category">
+                            <span class="skill-category-title">Python & Frameworks</span>
+                            <div class="skill-category-content">
+                                <span class="skill-chip">Python</span>
+                                <span class="skill-chip">Core Python</span>
+                                <span class="skill-chip">OOP</span>
+                                <span class="skill-chip">Django</span>
+                                <span class="skill-chip">DRF</span>
+                                <span class="skill-chip">Flask</span>
+                                <span class="skill-chip">FastAPI</span>
+                                <span class="skill-chip">REST APIs</span>
+                                <span class="skill-chip">JSON</span>
+                                <span class="skill-chip">JWT/OAuth</span>
+                            </div>
+                        </div>
+                        <div class="skill-category">
+                            <span class="skill-category-title">Frontend</span>
+                            <div class="skill-category-content">
+                                <span class="skill-chip">HTML5</span>
+                                <span class="skill-chip">CSS3</span>
+                                <span class="skill-chip">JavaScript</span>
+                                <span class="skill-chip">React.js</span>
+                                <span class="skill-chip">Tailwind CSS</span>
+                                <span class="skill-chip">Bootstrap</span>
+                            </div>
+                        </div>
+                        <div class="skill-category">
+                            <span class="skill-category-title">Database</span>
+                            <div class="skill-category-content">
+                                <span class="skill-chip">SQL</span>
+                                <span class="skill-chip">PostgreSQL</span>
+                                <span class="skill-chip">MySQL</span>
+                                <span class="skill-chip">Django ORM</span>
+                                <span class="skill-chip">SQLAlchemy</span>
+                            </div>
+                        </div>
+                        <div class="skill-category">
+                            <span class="skill-category-title">DevOps & Tools</span>
+                            <div class="skill-category-content">
+                                <span class="skill-chip">Git</span>
+                                <span class="skill-chip">GitHub</span>
+                                <span class="skill-chip">Linux</span>
+                                <span class="skill-chip">Shell</span>
+                                <span class="skill-chip">Docker</span>
+                                <span class="skill-chip">Nginx</span>
+                                <span class="skill-chip">CI/CD</span>
+                                <span class="skill-chip">AWS</span>
+                                <span class="skill-chip">Azure</span>
+                                <span class="skill-chip">GCP</span>
+                            </div>
+                        </div>
+                        <div class="skill-category">
+                            <span class="skill-category-title">Testing & Optimization</span>
+                            <div class="skill-category-content">
+                                <span class="skill-chip">Pytest</span>
+                                <span class="skill-chip">Debugging</span>
+                                <span class="skill-chip">Redis</span>
+                                <span class="skill-chip">Caching</span>
+                                <span class="skill-chip">Celery</span>
+                                <span class="skill-chip">Microservices</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Data Scientist
+                <div class="glass-card p-8 rounded-3xl">
+                    <div class="flex items-center gap-3 mb-10">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-purple-500/10 flex items-center justify-center border border-purple-500/20">
+                            <span class="material-symbols-outlined text-purple-400 text-lg"
+                                data-icon="analytics">analytics</span>
+                        </div>
+                        <h3
+                            class="text-2xl font-bold bg-gradient-to-r from-purple-400 to-purple-300 bg-clip-text text-transparent">
+                            Data Scientist</h3>
+                    </div>
+                    <div class="space-y-6">
+                        <div class="skill-category">
+                            <span class="skill-category-title">Programming</span>
+                            <div class="skill-category-content">
+                                <span class="skill-chip">Python</span>
+                            </div>
+                        </div>
+                        <div class="skill-category">
+                            <span class="skill-category-title">Data Management</span>
+                            <div class="skill-category-content">
+                                <span class="skill-chip">SQL</span>
+                                <span class="skill-chip">PostgreSQL</span>
+                                <span class="skill-chip">MySQL</span>
+                                <span class="skill-chip">Excel</span>
+                            </div>
+                        </div>
+                        <div class="skill-category">
+                            <span class="skill-category-title">Data Analysis</span>
+                            <div class="skill-category-content">
+                                <span class="skill-chip">Pandas</span>
+                                <span class="skill-chip">NumPy</span>
+                                <span class="skill-chip">Cleaning</span>
+                                <span class="skill-chip">ETL</span>
+                            </div>
+                        </div>
+                        <div class="skill-category">
+                            <span class="skill-category-title">Visualization</span>
+                            <div class="skill-category-content">
+                                <span class="skill-chip">Matplotlib</span>
+                                <span class="skill-chip">Seaborn</span>
+                                <span class="skill-chip">Power BI</span>
+                                <span class="skill-chip">Tableau</span>
+                            </div>
+                        </div>
+                        <div class="skill-category">
+                            <span class="skill-category-title">Machine Learning</span>
+                            <div class="skill-category-content">
+                                <span class="skill-chip">Scikit-learn</span>
+                                <span class="skill-chip">Feature Engineering</span>
+                                <span class="skill-chip">Regression</span>
+                                <span class="skill-chip">Classification</span>
+                                <span class="skill-chip">Clustering</span>
+                                <span class="skill-chip">TensorFlow</span>
+                                <span class="skill-chip">PyTorch</span>
+                                <span class="skill-chip">Model Evaluation</span>
+                            </div>
+                        </div>
+                        <div class="skill-category">
+                            <span class="skill-category-title">Statistics & Math</span>
+                            <div class="skill-category-content">
+                                <span class="skill-chip">Statistics</span>
+                                <span class="skill-chip">Probability</span>
+                            </div>
+                        </div>
+                        <div class="skill-category">
+                            <span class="skill-category-title">Tools</span>
+                            <div class="skill-category-content">
+                                <span class="skill-chip">Jupyter</span>
+                                <span class="skill-chip">Git</span>
+                                <span class="skill-chip">GitHub</span>
+                            </div>
+                        </div>
+                    </div> 
+                </div> -->
+            </div>
+        </section>
+        <!-- Future Data Projects Teaser -->
+        <section
+            class="mb-40 relative overflow-hidden rounded-[40px] bg-surface-container border border-white/5 p-12 md:p-24"
+            id="future">
+            <div class="absolute top-0 right-0 w-1/2 h-full opacity-20 blur-3xl pointer-events-none">
+                <div class="w-full h-full bg-blue-500 rounded-full animate-pulse"></div>
+            </div>
+            <div class="relative z-10 max-w-2xl">
+                <span class="text-label-sm font-label-sm text-blue-400 uppercase tracking-widest mb-6 block">Coming
+                    Soon</span>
+                <h2 class="font-headline-lg text-headline-lg text-on-background mb-8">Future Data Projects</h2>
+                <p class="text-body-lg text-on-surface-variant mb-12">Currently exploring Large Scale Data Processing
+                    and ML Ops. Building a high-throughput streaming engine for real-time analytics. Stay tuned for the
+                    unveiling of my deep-data infrastructure experiments.</p>
+                <div class="flex items-center gap-6">
+                    <div class="flex -space-x-3">
+                        <div
+                            class="w-12 h-12 rounded-full border-2 border-surface-container bg-slate-800 flex items-center justify-center">
+                            <span class="material-symbols-outlined text-sm" data-icon="monitoring">monitoring</span>
+                        </div>
+                        <div
+                            class="w-12 h-12 rounded-full border-2 border-surface-container bg-slate-700 flex items-center justify-center">
+                            <span class="material-symbols-outlined text-sm" data-icon="hub">hub</span>
+                        </div>
+                        <div
+                            class="w-12 h-12 rounded-full border-2 border-surface-container bg-slate-600 flex items-center justify-center">
+                            <span class="material-symbols-outlined text-sm" data-icon="smart_toy">smart_toy</span>
+                        </div>
+                    </div>
+                    <span class="text-sm font-medium text-on-surface-variant">3 Projects in Development</span>
+                </div>
+            </div>
+        </section>
+        <!-- Contact Section -->
+        <section class="mb-40" id="contact">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-20">
+                <div>
+                    <h2 class="font-headline-lg text-headline-lg text-on-background mb-8">Let's Build Something Great
+                    </h2>
+                    <p class="text-body-lg text-on-surface-variant mb-12">I'm always open to discussing backend
+                        architecture, product development, or new opportunities. Reach out and let's start a
+                        conversation.</p>
+                    <div class="space-y-8">
+                        <div class="flex items-start gap-4">
+                            <div
+                                class="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0">
+                                <span class="material-symbols-outlined text-blue-400" data-icon="mail">mail</span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-1">Email</h4>
+                                <p class="text-on-surface-variant">swarupmandal630@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div
+                                class="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0">
+                                <span class="material-symbols-outlined text-blue-400"
+                                    data-icon="location_on">location_on</span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-1">Location</h4>
+                                <p class="text-on-surface-variant">Remote / Kolkata, India</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="glass-card p-10 rounded-[32px]">
+                    <form id="contactForm" class="space-y-6">
+                        <div class="space-y-2">
+                            <label class="text-sm font-bold text-on-surface-variant ml-2">Name</label>
+                            <input id="name"
+                                class="w-full bg-slate-900/50 border border-white/10 rounded-2xl px-6 py-4 focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 outline-none transition-all"
+                                placeholder="John Doe" type="text" required />
+                            <span id="nameError" class="text-red-400 text-xs ml-2 hidden">Please enter your name</span>
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-sm font-bold text-on-surface-variant ml-2">Email Address</label>
+                            <input id="email"
+                                class="w-full bg-slate-900/50 border border-white/10 rounded-2xl px-6 py-4 focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 outline-none transition-all"
+                                placeholder="john@example.com" type="email" required />
+                            <span id="emailError" class="text-red-400 text-xs ml-2 hidden">Please enter a valid
+                                email</span>
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-sm font-bold text-on-surface-variant ml-2">Message</label>
+                            <textarea id="message"
+                                class="w-full bg-slate-900/50 border border-white/10 rounded-2xl px-6 py-4 focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 outline-none transition-all"
+                                placeholder="Tell me about your project..." rows="4" required></textarea>
+                            <span id="messageError" class="text-red-400 text-xs ml-2 hidden">Message must be at least 10
+                                characters</span>
+                        </div>
+                        <button id="submitBtn"
+                            class="w-full bg-primary-container text-on-primary-container py-5 rounded-2xl font-bold hover:shadow-[0_0_30px_rgba(46,91,255,0.3)] active:scale-95 transition-all"
+                            type="submit">
                             Send Message
                         </button>
-<span id="successMessage" class="text-green-400 text-sm text-center hidden block">Message sent successfully! I'll get back to you soon.</span>
-</form>
-</div>
-<script>
-const form = document.getElementById('contactForm');
-const nameInput = document.getElementById('name');
-const emailInput = document.getElementById('email');
-const messageInput = document.getElementById('message');
-const submitBtn = document.getElementById('submitBtn');
+                        <span id="successMessage" class="text-green-400 text-sm text-center hidden block">Message sent
+                            successfully! I'll get back to you soon.</span>
+                    </form>
+                </div>
+                <script src="assets/js/main.js"></script>
+            </div>
+        </section>
+    </main>
+    <!-- Footer -->
+    <footer class="w-full border-t border-white/5 mt-40 bg-slate-950">
+        <div class="max-w-7xl mx-auto px-8 py-20 flex flex-col md:flex-row justify-between items-center gap-8">
+            <div class="flex flex-col items-center md:items-start gap-4">
+                <div class="flex items-center gap-3">
+                    <span class="material-symbols-outlined text-blue-500" data-icon="terminal">terminal</span>
+                    <span class="text-sm font-bold text-slate-300">Swarup Mandal</span>
+                </div>
+                <p class="font-manrope text-xs tracking-wide uppercase font-semibold text-slate-500">© 2024 Swarup
+                    Mandal. Crafted for Technical Excellence.</p>
+            </div>
+            <div class="flex gap-8">
+                <a class="font-manrope text-xs tracking-wide uppercase font-semibold text-slate-500 hover:text-blue-500 transition-colors duration-200"
+                    href="https://github.com/SwarupMandal-droid" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <a class="font-manrope text-xs tracking-wide uppercase font-semibold text-slate-500 hover:text-blue-500 transition-colors duration-200"
+                    href="https://linkedin.com/in/swarupmandal" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a class="font-manrope text-xs tracking-wide uppercase font-semibold text-slate-500 hover:text-blue-500 transition-colors duration-200"
+                    href="mailto:swarupmandal630@gmail.com">Email</a>
+                <a class="font-manrope text-xs tracking-wide uppercase font-semibold text-slate-500 hover:text-blue-500 transition-colors duration-200"
+                    href="https://github.com/SwarupMandal-droid" target="_blank" rel="noopener noreferrer">Source
+                    Code</a>
+            </div>
+        </div>
+    </footer>
+    <!-- FAB for quick contact -->
+    <a class="fixed bottom-8 right-8 w-14 h-14 bg-primary-container text-on-primary-container rounded-full flex items-center justify-center shadow-2xl hover:scale-110 active:scale-90 transition-transform z-40"
+        href="#contact">
+        <span class="material-symbols-outlined" data-icon="chat">chat</span>
+    </a>
+</body>
 
-function validateEmail(email) {
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return emailRegex.test(email);
-}
-
-function clearErrors() {
-  document.getElementById('nameError').classList.add('hidden');
-  document.getElementById('emailError').classList.add('hidden');
-  document.getElementById('messageError').classList.add('hidden');
-}
-
-function showError(fieldId) {
-  document.getElementById(fieldId + 'Error').classList.remove('hidden');
-}
-
-form.addEventListener('submit', function(e) {
-  e.preventDefault();
-  clearErrors();
-  
-  let isValid = true;
-  
-  // Validate name
-  if (nameInput.value.trim() === '') {
-    showError('name');
-    isValid = false;
-  }
-  
-  // Validate email
-  if (emailInput.value.trim() === '' || !validateEmail(emailInput.value)) {
-    showError('email');
-    isValid = false;
-  }
-  
-  // Validate message
-  if (messageInput.value.trim().length < 10) {
-    showError('message');
-    isValid = false;
-  }
-  
-  if (isValid) {
-    // Create mailto link with form data
-    const mailtoLink = `mailto:swarupmandal630@gmail.com?subject=Portfolio Contact from ${encodeURIComponent(nameInput.value)}&body=${encodeURIComponent('Name: ' + nameInput.value + '\nEmail: ' + emailInput.value + '\n\nMessage:\n' + messageInput.value)}`;
-    
-    // Show success message
-    document.getElementById('successMessage').classList.remove('hidden');
-    submitBtn.textContent = '✓ Message Ready to Send';
-    submitBtn.style.opacity = '0.7';
-    
-    // Open email client
-    window.location.href = mailtoLink;
-    
-    // Reset form after 2 seconds
-    setTimeout(() => {
-      form.reset();
-      document.getElementById('successMessage').classList.add('hidden');
-      submitBtn.textContent = 'Send Message';
-      submitBtn.style.opacity = '1';
-    }, 2000);
-  }
-});
-</script>
-</div>
-</section>
-</main>
-<!-- Footer -->
-<footer class="w-full border-t border-white/5 mt-40 bg-slate-950">
-<div class="max-w-7xl mx-auto px-8 py-20 flex flex-col md:flex-row justify-between items-center gap-8">
-<div class="flex flex-col items-center md:items-start gap-4">
-<div class="flex items-center gap-3">
-<span class="material-symbols-outlined text-blue-500" data-icon="terminal">terminal</span>
-<span class="text-sm font-bold text-slate-300">Swarup Mandal</span>
-</div>
-<p class="font-manrope text-xs tracking-wide uppercase font-semibold text-slate-500">© 2024 Swarup Mandal. Crafted for Technical Excellence.</p>
-</div>
-<div class="flex gap-8">
-<a class="font-manrope text-xs tracking-wide uppercase font-semibold text-slate-500 hover:text-blue-500 transition-colors duration-200" href="https://github.com/SwarupMandal-droid" target="_blank" rel="noopener noreferrer">GitHub</a>
-<a class="font-manrope text-xs tracking-wide uppercase font-semibold text-slate-500 hover:text-blue-500 transition-colors duration-200" href="https://linkedin.com/in/swarupmandal" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-<a class="font-manrope text-xs tracking-wide uppercase font-semibold text-slate-500 hover:text-blue-500 transition-colors duration-200" href="mailto:swarupmandal630@gmail.com">Email</a>
-<a class="font-manrope text-xs tracking-wide uppercase font-semibold text-slate-500 hover:text-blue-500 transition-colors duration-200" href="https://github.com/SwarupMandal-droid" target="_blank" rel="noopener noreferrer">Source Code</a>
-</div>
-</div>
-</footer>
-<!-- FAB for quick contact -->
-<a class="fixed bottom-8 right-8 w-14 h-14 bg-primary-container text-on-primary-container rounded-full flex items-center justify-center shadow-2xl hover:scale-110 active:scale-90 transition-transform z-40" href="#contact">
-<span class="material-symbols-outlined" data-icon="chat">chat</span>
-</a>
-</body></html>
+</html>
